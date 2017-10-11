@@ -40,6 +40,7 @@ public class ServiceTest {
         HelloService helloService = rpcClient.create(HelloService.class);
         Person person = new Person("Yong", "Huang");
         String result = helloService.hello(person);
+        System.err.println("" + result);
         Assert.assertEquals("Hello! Yong Huang", result);
     }
 
