@@ -39,6 +39,9 @@ public class ClhLock implements Lock {
      * +----------+            +----------+         | head |
      * +------+
      * 3.寻找当前node的prev-node然后开始自旋
+     *
+     * AQS中线程不是一直在自旋的，而可能会反复的睡眠和唤醒，这就需要前继释放锁的时候通过next 指针找到其后继将其唤醒，
+     * 也就是AQS的等待队列中后继是被前继唤醒的。AQS结合了自旋和睡眠/唤醒两种方法的优点
      */
     @Override
     public void lock() {
